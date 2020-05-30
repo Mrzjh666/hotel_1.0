@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- menu -->
+    <link href="css/component.css" rel="stylesheet" type="text/css"  />
+    <!-- //menu -->
+    <link rel="stylesheet" href="css/swipebox.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <!-- //js -->
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- swipe box js -->
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $(".swipebox").swipebox();
+        });
+    </script>
+    <!-- //swipe box js -->
+    <!--animate-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+</head>
+<body class="cbp-spmenu-push">
+<!--top-header-->
+<!--bottom-->
+<section class="button">
+    <button id="showLeftPush" class="wow fadeInDown animated" data-wow-delay=".5s"><img src="images/menu.png" alt=""></button>
+</section>
+<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+    <h3>Menu</h3>
+    <div class="logo">
+        <a class=" link link--yaku active" href="index.html"><span>首</span><span>页</span></a>
+        <a class=" link link--yaku" href="about.html"><span>关</span><span>于</span></a>
+        <a class=" link link--yaku" href="services.html"><span>服</span><span>务</span></a>
+        <a class=" link link--yaku" href="gallery.html"><span>画</span><span>廊</span></a>
+<!--        <a class=" link link&#45;&#45;yaku" href="contact.html"><span>联</span><span>系</span></a>-->
+    </div>
+
+
+</nav>
+
+<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+<script src="js/classie.js"></script>
+<script>
+    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+        showLeftPush = document.getElementById( 'showLeftPush' ),
+        showRightPush = document.getElementById( 'showRightPush' ),
+        body = document.body;
+
+    showLeftPush.onclick = function() {
+        classie.toggle( this, 'active' );
+        classie.toggle( body, 'cbp-spmenu-push-toright' );
+        classie.toggle( menuLeft, 'cbp-spmenu-open' );
+        disableOther( 'showLeftPush' );
+    };
+
+    function disableOther( button ) {
+        if( button !== 'showLeftPush' ) {
+            classie.toggle( showLeftPush, 'disabled' );
+        }
+        if( button !== 'showRightPush' ) {
+            classie.toggle( showRightPush, 'disabled' );
+        }
+    }
+</script>
+<!-- banner -->
+<div class="banner ">
+    <div class="banner-left page-head">
+        <div class="grid__item wow fadeInDown animated" data-wow-delay=".5s">
+            <h1><a class="link link--ilin" href="index.html"><span>皇家  </span><span>酒店</span></a></h1>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- contact -->
+<div class="gallery">
+    <div class="container">
+        <h3 class="tittle">餐厅美食</h3>
+        <div class="gallery-grids">
+            <div class="col-md-6 baner-top wow fadeInRight animated" data-wow-delay=".5s">
+                <a href="images/g1.jpg" class="b-link-stripe b-animate-go  swipebox">
+                    <div class="gal-spin-effect vertical ">
+                        <img src="images/g1.jpg" alt=" " />
+                        <div class="gal-text-box">
+                            <div class="info-gal-con">
+                                <h4>皇家酒店</h4>
+                                <span class="separator"></span>
+                                <p>一个人看到的是风景，两个人看到的是生活。</p>
+                                <span class="separator"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 baner-top wow fadeInLeft animated" data-wow-delay=".5s">
+                <a href="images/g2.jpg" class="b-link-stripe b-animate-go  swipebox">
+                    <div class="gal-spin-effect vertical ">
+                        <img src="images/g2.jpg" alt=" " />
+                        <div class="gal-text-box">
+                            <div class="info-gal-con">
+                                <h4>皇家酒店</h4>
+                                <span class="separator"></span>
+                                <p>想念是一种仪式，真正的记忆与生俱来。.</p>
+                                <span class="separator"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 baner-top ban-mar wow fadeInUp animated" data-wow-delay=".5s">
+                <a href="images/c1.jpg" class="b-link-stripe b-animate-go  swipebox">
+                    <div class="gal-spin-effect vertical ">
+                        <img src="images/c1.jpg" alt=" " />
+                        <div class="gal-text-box">
+                            <div class="info-gal-con">
+                                <h4>皇家酒店</h4>
+                                <span class="separator"></span>
+                                <p>不必遗憾，若是美好，叫做精彩，若是糟糕，叫做经历。</p>
+                                <span class="separator"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 baner-top ban-mar wow fadeInDown animated" data-wow-delay=".5s">
+                <a href="images/c2.jpg" class="b-link-stripe b-animate-go  swipebox">
+                    <div class="gal-spin-effect vertical ">
+                        <img src="images/c2.jpg" alt=" " />
+                        <div class="gal-text-box">
+                            <div class="info-gal-con">
+                                <h4>皇家酒店</h4>
+                                <span class="separator"></span>
+                                <p>珍惜今天，珍惜现在，谁知道明天和意外，哪一个先来。</p>
+                                <span class="separator"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 baner-top ban-mar wow fadeInUp animated" data-wow-delay=".5s">
+                <a href="images/c3.jpg" class="b-link-stripe b-animate-go  swipebox">
+                    <div class="gal-spin-effect vertical ">
+                        <img src="images/c3.jpg" alt=" " />
+                        <div class="gal-text-box">
+                            <div class="info-gal-con">
+                                <h4>皇家酒店</h4>
+                                <span class="separator"></span>
+                                <p>有些路很远，走下去会很累，可是，不走，又会后悔。</p>
+                                <span class="separator"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 baner-top ban-mar wow fadeInDown animated" data-wow-delay=".5s">
+                <a href="images/c4.jpg" class="b-link-stripe b-animate-go  swipebox">
+                    <div class="gal-spin-effect vertical ">
+                        <img src="images/c4.jpg" alt=" " />
+                        <div class="gal-text-box">
+                            <div class="info-gal-con">
+                                <h4>皇家酒店</h4>
+                                <span class="separator"></span>
+                                <p>不管心情如何，不论今天过得怎么样，无论身在何方，请记得微笑！</p>
+                                <span class="separator"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 baner-top wow fadeInRight animated" data-wow-delay=".5s">
+                <a href="images/g7.jpg" class="b-link-stripe b-animate-go  swipebox">
+                    <div class="gal-spin-effect vertical ">
+                        <img src="images/g7.jpg" alt=" " />
+                        <div class="gal-text-box">
+                            <div class="info-gal-con">
+                                <h4>皇家酒店</h4>
+                                <span class="separator"></span>
+                                <p>绝口不提，不是因为忘记，而是因为铭记。.</p>
+                                <span class="separator"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 baner-top wow fadeInLeft animated" data-wow-delay=".5s">
+                <a href="images/g8.jpg" class="b-link-stripe b-animate-go  swipebox">
+                    <div class="gal-spin-effect vertical ">
+                        <img src="images/g8.jpg" alt=" " />
+                        <div class="gal-text-box">
+                            <div class="info-gal-con">
+                                <h4>皇家酒店</h4>
+                                <span class="separator"></span>
+                                <p>你有没有很想，和谁重新认识一次。</p>
+                                <span class="separator"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //gallery -->
+<!-- //contact -->
+
+<div class="footer-bot wow fadeInRight animated" data-wow-delay=".5s">
+    <div class="container">
+        <div class="logo2">
+            <h2><a href="index.html">皇家 酒店</a></h2>
+        </div>
+        <div class="ftr-menu">
+            <ul>
+                <li><a href="index.html">主页 </a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="services.html">服务</a></li>
+                <li><a href="gallery.html">画廊</a></li>
+<!--                <li><a href="contact.html">联系</a></li>-->
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="copy-right wow fadeInLeft animated" data-wow-delay=".5s">
+    <div class="container">
+        <p><a target="_blank" href="login.html">系统管理中心</a></p>
+    </div>
+</div>
+<!-- for bootstrap working -->
+<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- smooth scrolling -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+            };
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+</script>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+
+</body>
+</html>

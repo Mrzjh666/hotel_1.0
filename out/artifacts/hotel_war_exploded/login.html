@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录</title>
+<link rel="stylesheet" type="text/css" href="css/public.css" />
+<link rel="stylesheet" type="text/css" href="css/page.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script>
+function check(){
+var account=document.getElementById("account").value;
+var pass=document.getElementById("pass").value;
+if(name==null || pass==null){
+alert("用户名或密码错误");
+}else{
+}
+}
+</script>
+</head>
+<body>
+<div class="logDiv">
+    <img class="logBanner" src="./images/logBanner.png" />
+	<div class="banner-text">
+    <form method="post"  action="manager/login">
+	<div class="logGet">
+		<!-- 头部提示信息--><tr>
+        <div class="logD logDtip">
+            <p class="p1">登录</p>
+        </div></tr>
+        <!-- 输入框--><tr>
+        <div class="form-group">
+            <img class="img1" src="./images/logName.png" /><input type="text" id="manager_account" name="manager_account"
+                placeholder="输入用户账号" />
+        </div></tr><tr>
+        <div class="form-group">
+            <img class="img1" src="images/logPwd.png" /><input type="password" id="manager_password" name="manager_password"
+                placeholder="输入用户密码" />
+        </div></tr><tr>
+        <div class="logC">
+            <input type="submit" value="登陆" style="width:80px;height:30px;font-family:楷体 ;color:#5856ff;">
+        </div>
+		</tr>
+	</div></form></div>
+</div>
+<!-- 登录body  end-->
+
+    <!-- 登录页面底部 -->
+	<div class="logFoot">
+		<p class="p1">版权所有：皇家酒店</p>
+	</div>
+	<!-- 登录页面底部end -->
+   
+</body>
+</html>

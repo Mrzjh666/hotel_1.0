@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //for-mobile-apps -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- menu -->
+    <link href="css/component.css" rel="stylesheet" type="text/css"/>
+    <!-- //menu -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- js -->
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <!-- //js -->
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!--animate-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <script src="js/wow.min.js"></script>
+    <script>
+        // new WOW().init();
+    </script>
+    <!--//end-animate-->
+
+</head>
+<body class="cbp-spmenu-push">
+<!--top-header-->
+<!--bottom-->
+<section class="button">
+    <button id="showLeftPush"><img src="images/menu.png" alt=""></button>
+</section>
+<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+    <h3>Menu</h3>
+    <div class="logo">
+        <a class=" link link--yaku active" href="index.html"><span>首</span><span>页</span></a>
+        <a class=" link link--yaku" href="about.html"><span>关</span><span>于</span></a>
+        <a class=" link link--yaku" href="services.html"><span>服</span><span>务</span></a>
+        <a class=" link link--yaku" href="gallery.html"><span>画</span><span>廊</span></a>
+<!--        <a class=" link link&#45;&#45;yaku" href="contact.html"><span>联</span><span>系</span></a>-->
+    </div>
+
+
+</nav>
+
+<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+<script src="js/classie.js"></script>
+<script>
+    var menuLeft = document.getElementById('cbp-spmenu-s1'),
+        showLeftPush = document.getElementById('showLeftPush'),
+        showRightPush = document.getElementById('showRightPush'),
+        body = document.body;
+
+    showLeftPush.onclick = function () {
+        classie.toggle(this, 'active');
+        classie.toggle(body, 'cbp-spmenu-push-toright');
+        classie.toggle(menuLeft, 'cbp-spmenu-open');
+        disableOther('showLeftPush');
+    };
+
+    function disableOther(button) {
+        if (button !== 'showLeftPush') {
+            classie.toggle(showLeftPush, 'disabled');
+        }
+        if (button !== 'showRightPush') {
+            classie.toggle(showRightPush, 'disabled');
+        }
+    }
+
+    function leftroomnum(obj) {
+        obj.onblur = null;
+        // console.log(obj);
+        var roomtype = obj.value;
+        $.ajax({
+            url: "UserServlet",
+            type: "POST",
+            data: {roomtype: roomtype, method: "selectRoomType"},
+            dataType: "text",
+            success: function (data) {
+                // console.log(data);
+                var JsonArr = JSON.parse(data);
+                console.log(JsonArr);
+                var leftlist = document.getElementsByClassName("leftlist")[0];
+                var select =document.createElement("select");
+                    select.name="room_loc";
+                    select.id="room_loc";
+                for (var i = 0; i < JsonArr.length; i++) {
+
+                   var option=document.createElement("option");
+                        option.value=JsonArr[i];
+                        option.innerText="房间"+JsonArr[i]+"号空闲";
+                        select.append(option);
+                }
+                leftlist.append(select);
+
+            }
+        })
+    }
+</script>
+<!-- banner -->
+<div class="banner">
+    <div class="banner-left">
+        <div class="grid__item wow fadeInDown animated" data-wow-delay=".5s">
+            <h1><a class="link link--ilin" href="index.html"><span>皇家  </span><span> 酒店</span></a></h1>
+        </div>
+        <div class="clearfix"></div>
+        <div class="banner-info wow fadeInUp animated" data-wow-delay=".5s">
+            <h3>美好源自于彼此的相遇</h3>
+            <p>你好，朋友！皇家酒店欢迎你的到来，祝您在本次出行中万事顺利，心想事成.
+                如果有什么需要，请联系我们011-88880000. </p>
+        </div>
+        <div class="social-pos wow fadeInDown animated" data-wow-delay=".5s">
+            <ul>
+                <li><a class="ico1" href="#"></a></li>
+                <li><a class="ico2" href="#"></a></li>
+                <li><a class="ico3" href="#"></a></li>
+            </ul>
+        </div>
+        <div class="banner-right wow fadeInRight animated" data-wow-delay=".5s">
+            <div class="banner-text">
+                <h3>Choose Your Best Hotel</h3>
+                <form action="UserServlet?method=add_User" method="post">
+                    <div class="best-hot">
+                        <h5>姓名</h5>
+                        <input type="text" name="user_name" id="user_name" value="Type Here" onfocus="this.value = '';"
+                               onblur="if (this.value == '') {this.value = '输入姓名';}" required="">
+                    </div>
+                    <div class="best-hot">
+                        <h5>电话</h5>
+                        <input type="text" value="user_phone" id="user_phone" name="user_phone"
+                               onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '输入您的手机号码';}"
+                               required="">
+                    </div>
+                    <div class="best-hot">
+                        <h5>入住日期</h5>
+
+                        <input type="text" value="例：2019-12-10" name="user_date" id="user_date"
+                               onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '例：2019-1-1';}">
+
+                    </div>
+                    <div class="best-hot">
+                        <h5>房间类型</h5>
+                        <select name="room_type" onblur="leftroomnum(this)">
+                            <option name="room_type" value="标准">标准房 99元/位</option>
+                            <option name="room_type" value="总统">总统套间 299元/位</option>
+                            <option name="room_type" value="大床">大床房 199元/位</option>
+                            <option name="room_type" value="圆床">圆床房 169元/位</option>
+                        </select>
+                        <div class="leftlist" style="width: 100%;height: auto;">
+
+                        </div>
+
+                    </div>
+                    <div class="best-hot">
+                        <h5>入住时长</h5>
+
+                        <input type="text" name="user_liveday" value="例：5" id="user_liveday" onfocus="this.value = '';"
+                               onblur="if (this.value == '') {this.value = '例：5';}">
+                    </div>
+                    <input type="submit" value="立即预定">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="banner-bot">
+    <div class="container">
+        <div class="col-md-3 bottom-one btm-two wow fadeInLeft animated" data-wow-delay=".5s">
+            <h3>舒适的住宿</h3>
+            <p> 皇家酒店共设有200间客房，其中共有50 间豪华客房与套房，均有专属设施，为企业商务旅客提供顶级舒适与便捷，尊贵独享。</p>
+        </div>
+        <div class="col-md-3 bottom-gd wow fadeInRight animated" data-wow-delay=".5s">
+            <div class="item item-type-double">
+                <div class="item-hover">
+                    <div class="item-info">
+                        <div class="date">皇家酒店</div>
+                        <div class="line"></div>
+                        <div class="headline">不必遗憾，若是美好，叫做精彩，若是糟糕，叫做经历。</div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="mask"></div>
+                </div>
+                <div class="item-img"><img class="img-responsive" src="images/c1.jpg" alt=" "/></div>
+            </div>
+        </div>
+        <div class="col-md-3 bottom-one wow fadeInLeft animated" data-wow-delay=".5s">
+            <h3>会员专享·俱乐部嘉年华</h3>
+            <p> 皇家酒店为你提供无微不至的服务，同时，如果你还想体验更多，欢迎加入皇家酒店VIP俱乐部，这里有未知的惊喜在等着你。</p>
+        </div>
+        <div class="col-md-3 bottom-gd wow fadeInRight animated" data-wow-delay=".5s">
+            <div class="item item-type-double">
+                <div class="item-hover">
+                    <div class="item-info">
+                        <div class="date">皇家酒店</div>
+                        <div class="line"></div>
+                        <div class="headline">珍惜今天，珍惜现在，谁知道明天和意外，哪一个先来。</div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="mask"></div>
+                </div>
+                <div class="item-img"><img class="img-responsive" src="images/c2.jpg" alt=" "/></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="content">
+    <div class="content-wid">
+        <div class="col-md-5 content-left wow fadeInRight animated" data-wow-delay=".5s">
+            <ul id="sti-menu" class="sti-menu">
+                <li data-hovercolor="#fff">
+                    <a href="#">
+                        <h4 data-type="mText" class="sti-item">即刻预定</h4>
+                        <p data-type="sText" class="sti-item">心动即可行动</p>
+                        <span data-type="icon" class="sti-icon glyphicon glyphicon-pencil sti-item"></span>
+                    </a>
+                </li>
+                <li data-hovercolor="#fff">
+                    <a href="#">
+                        <h4 data-type="mText" class="sti-item">俱乐部的邀请</h4>
+                        <p data-type="sText" class="sti-item">我们期待你的到来</p>
+                        <span data-type="icon" class="sti-icon glyphicon glyphicon-map-marker sti-item"></span>
+                    </a>
+                </li>
+            </ul>
+            <script type="text/javascript" src="js/jquery.iconmenu.js"></script>
+            <script type="text/javascript">
+                $(function () {
+                    $('#sti-menu').iconmenu({
+                        animMouseenter: {
+                            'mText': {speed: 400, easing: 'easeOutExpo', delay: 140, dir: 1},
+                            'sText': {speed: 400, easing: 'easeOutExpo', delay: 0, dir: 1},
+                            'icon': {speed: 800, easing: 'easeOutBounce', delay: 280, dir: 1}
+                        },
+                        animMouseleave: {
+                            'mText': {speed: 400, easing: 'easeInExpo', delay: 140, dir: 1},
+                            'sText': {speed: 400, easing: 'easeInExpo', delay: 280, dir: 1},
+                            'icon': {speed: 400, easing: 'easeInExpo', delay: 0, dir: 1}
+                        }
+                    });
+                });
+            </script>
+        </div>
+        <div class="col-md-7 content-right wow fadeInLeft animated" data-wow-delay=".5s">
+
+            <div class="wrapper">
+                <div class="link" href="#"></div>
+                <div class="overlay">
+                    <div class="arrow-left"></div>
+                    <div class="rectangle"></div>
+                </div>
+                <div class="description">
+                    <h3>皇家酒店</h3>
+                    <p>本酒店是融合了当代艺术与创意设计的代表之作，为您淋漓尽致地展示这座花园城市的活力，为您打造绝无仅有的独特体验。 </p>
+                </div>
+                <img class="img-responsive" src="images/11.jpg" alt=" "/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="content-bottom">
+    <div class="container">
+        <div class="col-md-6 con-btm-right wow fadeInRight animated" data-wow-delay=".5s">
+            <h4>优质的服务活动</h4>
+            <p>本酒店设有大量设备完善的客房与套房，经典的设计中不失现代的舒适感，让您能尽情的放松身心。同时酒店内置的健身中心拥有完善的健身娱乐设施，供您尽情放松，恢复体力。</p>
+            <a href="about.html" class="hvr-outline-out button2">我们的更多信息</a>
+        </div>
+        <div class="col-md-6 con-btm-gds wow fadeInLeft animated" data-wow-delay=".5s">
+            <div class="text-center">
+                <img src="images/test1.png" alt=" "/>
+                <h3>Martin H. Jhonsons</h3>
+            </div>
+            <div class="stars-rate">
+				<span class="starRating">
+					<input id="rating5" type="radio" name="rating" value="5">
+					<label for="rating5">5</label>
+					<input id="rating4" type="radio" name="rating" value="4">
+					<label for="rating4">4</label>
+					<input id="rating3" type="radio" name="rating" value="3">
+					<label for="rating3">3</label>
+					<input id="rating2" type="radio" name="rating" value="2" checked>
+					<label for="rating2">2</label>
+					<input id="rating1" type="radio" name="rating" value="1">
+					<label for="rating1">1</label>
+				</span>
+            </div>
+            <div class="text-center">
+                <p> 国际的专业健身教练，酒店健身中心的顾问，负责为你提供健身相关的建议，同时帮你一起制定更好的健身计划。负责，认真，专业，高效。这些是我们的永恒追求，欢迎你的咨询。</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="we-focus">
+    <div class="container">
+        <div class="focus-grids">
+            <div class="col-md-6 focus-grid wow fadeInDown animated" data-wow-delay=".5s">
+                <h3>我们最好的餐饮服务</h3>
+                <p>屡获殊荣的意大利餐厅 Basilico、备受好评的夏宫粤式餐厅、华丽迷人的曼哈顿酒吧、精致美味的英式下午茶，为您带来一场味觉盛宴。 </p>
+            </div>
+            <div class="col-md-3 focus-grid wow fadeInDown animated" data-wow-delay=".5s">
+
+                <img src="images/f1.jpg">
+
+            </div>
+            <div class="col-md-3 focus-grid wow fadeInDown animated" data-wow-delay=".5s">
+
+                <img src="images/f2.jpg">
+
+            </div>
+            <div class="col-md-3 focus-grid wow fadeInUp animated" data-wow-delay=".5s">
+
+                <img src="images/f3.jpg">
+
+            </div>
+            <div class="col-md-3 focus-grid wow fadeInDown animated" data-wow-delay=".5s">
+
+                <img src="images/f4.jpg">
+
+            </div>
+
+            <div class="col-md-3 focus-grid wow fadeInUp animated" data-wow-delay=".5s">
+
+                <img src="images/f6.jpg">
+
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="experience">
+    <div class="container">
+        <h3 class="tittle">我们最佳的推广服务</h3>
+        <p class="exp-text">我们精心为你准备了优质的服务，请尽情享受自己的美好时光</p>
+        <div class="col-md-4 exp-grids wow fadeInRight animated" data-wow-delay=".5s">
+            <div class="exp-gd-info one">
+                <div class="exp-info-text hvr-rectangle-out">
+                    <h4>英式下午茶</h4>
+                    <p>下午的时间，无需太多的陪伴，优雅而安静的美好时光</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 exp-grids wow fadeInUp animated" data-wow-delay=".5s">
+            <div class="exp-gd-info two">
+                <div class="exp-info-text hvr-rectangle-out">
+                    <h4>健身中心</h4>
+                    <p>身中心提供全方位的健身设施，设备齐全的健身馆、泳池、桑拿房以及蒸室、理疗按摩，感受健身热潮，自己的身体得到精心呵护。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 exp-grids wow fadeInLeft animated" data-wow-delay=".5s">
+            <div class="exp-gd-info three">
+                <div class="exp-info-text hvr-rectangle-out">
+                    <h4>豪华客房与套房</h4>
+                    <p>傍晚，在自己的房间里，观看着窗外的灯火阑珊，享受惬意的个人时光。</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="footer-bot wow fadeInRight animated" data-wow-delay=".5s">
+    <div class="container">
+        <div class="logo2">
+            <h2><a href="index.html">皇家 酒店</a></h2>
+        </div>
+        <div class="ftr-menu">
+            <ul>
+                <li><a href="index.html">主页 </a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="services.html">服务</a></li>
+                <li><a href="gallery.html">画廊</a></li>
+<!--                <li><a href="contact.html">联系</a></li>-->
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="copy-right wow fadeInLeft animated" data-wow-delay=".5s">
+    <div class="container">
+        <p><a target="_blank" href="login.html">系统管理中心</a></p>
+    </div>
+</div>
+<!-- for bootstrap working -->
+<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- smooth scrolling -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+            };
+        */
+        $().UItoTop({easingType: 'easeOutQuart'});
+    });
+</script>
+<a href="#" id="toTop" style="display: block;">to top <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+
+</body>
+</html>
