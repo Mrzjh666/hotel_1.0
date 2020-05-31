@@ -19,7 +19,6 @@ public class ManagerController {
     @RequestMapping(value="/manager/login")
     public String login(@Param("manager_account") String manager_account,@Param("manager_password")String  manager_password,
                               ModelAndView mv, HttpSession session){
-        System.out.println("now login"+manager_account+"////\\\\\\\\\\"+manager_password);
         Manager manager = managerService.login(manager_account,manager_password);
         if(manager != null)
         {

@@ -22,14 +22,15 @@ public class RoomController {
     @Qualifier("roomService")
     private RoomService roomService;
     @RequestMapping(value = "/room/searchByRoomType")
-    public ModelAndView searchByType(String room_type,  @RequestParam(required = false)int currentPage,  @RequestParam(required = false) String delResult){
+    public ModelAndView searchByType(@RequestParam("roomType") String roomType,  @RequestParam(required = false)int currentPage,  @RequestParam(required = false) String delResult){
         PageParms parms = new PageParms();
         ModelAndView mv= new ModelAndView();
-        mv.addObject("allRoom",roomService.findRoomByType(room_type,currentPage,parms));
+        System.out.println(roomType+"controller");
+        mv.addObject("allRoom",roomService.findRoomByType(roomType,currentPage,parms));
         mv.addObject("currentPage",parms.getCurrentPage());
         mv.addObject("allCount",parms.getAllCount());
         mv.addObject("allPageCount",parms.getAllPageCount());
-        mv.addObject("searchRoom_type",room_type);
+        mv.addObject("searchRoom_type",roomType);
         mv.setViewName("/jsp/room//roomtable");
         return mv;
     }

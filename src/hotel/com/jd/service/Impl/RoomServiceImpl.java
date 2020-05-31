@@ -31,7 +31,7 @@ public class RoomServiceImpl implements RoomService {
     public ArrayList<Room> findRoomByType(String room_type, int currentPage, PageParms parms) {
         if(room_type == null)
             room_type="";
-
+        System.out.println(room_type+"service");
         parms.setAllCount(roomMapper.getRecordNum(room_type));
         parms.setAllPageCount((parms.getAllCount()+parms.getPageSize()-1)/parms.getPageSize());
         if(parms.getAllPageCount()>0 && currentPage> parms.getAllPageCount())

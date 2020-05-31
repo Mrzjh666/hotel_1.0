@@ -25,7 +25,7 @@ public class AuthorizedInterceptor implements HandlerInterceptor
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
                                 Exception exception) throws Exception
     {
-        System.out.println("interceptor work");
+//        System.out.println("interceptor work");
     }
 
     /**
@@ -35,7 +35,7 @@ public class AuthorizedInterceptor implements HandlerInterceptor
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView mv)
             throws Exception
     {
-        System.out.println("postHandle");
+//        System.out.println("postHandle");
     }
 
     /**
@@ -45,7 +45,7 @@ public class AuthorizedInterceptor implements HandlerInterceptor
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
     {
-        System.out.println("preHandle");
+//        System.out.println("preHandle");
         return true;
 //        /** 默认用户没有登录 */
 //        boolean flag=false;
