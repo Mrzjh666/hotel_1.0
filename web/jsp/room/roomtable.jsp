@@ -87,9 +87,9 @@
 
         <!-- 查询块 -->
         <div class="search" >
-            <form class="form-inline" name="roomForm" action="../room/searchByType" method="post">
+            <form class="form-inline" name="roomForm" action="../room/searchByRoomType" method="post">
                 <!-- <input type="hidden" name="method" value="search"/> -->
-                <input type="text" class="form-control" name="roomType" value="{room_type}"/>
+                <input type="text" class="form-control" name="roomType" />
                 <input type="hidden" class="form-control" name="currentPage" value="1" />
                 <input type="submit" class="btn btn-primary" value="查   询" />&nbsp;&nbsp;
 
@@ -120,16 +120,16 @@
                         <th style="vertical-align: middle;">${list.room_flag}</th>
                         <th style="vertical-align: middle;">${list.hotel_id}</th>
                         <th>
-                            <H4>
-                                <a href="../room/openUpdate?room_id=${room.room_id}">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true" />
+
+                                <a href="../room/openUpdate?room_id=${list.room_id}">
+                                    <H4> 修改<span class="glyphicon glyphicon-edit" aria-hidden="true" /></H4>
                                 </a>
-                            </H4>
+
                         </th>
                         <th>
                             <H4>
-                                    <a href="../rome/delete?room_id=${room.room_id}&room_type=${rome_type}&currentPage={currentPage}">
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true" />
+                                    <a href="../room/delete?room_id=${list.room_id}&room_type=${list.room_type}&currentPage=${currentPage}">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true" />删除
                                     </a>
                             </H4>
                         </th>

@@ -23,7 +23,7 @@ public interface RoomMapper {
      * @return 该类型房间个数
      */
     @Select("select count(room_type) as AllRecord from hotel.room where room_type like concat('%',#{room_type},'%')")
-    int getRecordNum(@Param("room_tyoe") String room_type);
+    int getRecordNum(@Param("room_type") String room_type);
     /**
      * @param room_id
      * @return Room对象，无就返回null
@@ -35,7 +35,7 @@ public interface RoomMapper {
      * @info room_type  start_place size
      * @return Room集合，其中全部该类型的房子
      */
-    @Select("select * from hotel.room where room_type like concat('%',#{room_type}),'%' limit #{start_place},#{size}")
+    @Select("select * from hotel.room where room_type like concat('%',#{room_type},'%') limit #{start_place},#{size}")
     ArrayList<Room> findRoomByType(@Param("room_type") String room_type,@Param("start_place") int start_place,@Param("size")int size);
     /**
      * @info room_type room_flag start_place size
@@ -43,7 +43,7 @@ public interface RoomMapper {
      */
     @Select("select * from hotel.room where room_type like concat('%',#{room_type}),'%' having room_flag like concat('%',room_flag,'%') limit #{start_place},#{size}")
     ArrayList<Room> findRoomByTypeAndFlag(@Param("room_type") String room_type,@Param("room_flag") String room_flag,@Param("start_place") int start_place,@Param("size")int size);
-    @Update("update hotel.room set room_type=#{room_type},room_area=#{room_area},room_price=#{room_price},room_no=#{room_no},room_flag=#{room_flag},hotel_id={hotel_id} where room_id={room_id}")
+    @Update("update hotel.room set room_type=#{room_type},room_area=#{room_area},room_price=#{room_price},room_no=#{room_no},room_flag=#{room_flag} where room_id=#{room_id}")
     boolean update(Room room);
     @Delete("delete from hotel.room where room_id=#{room_id}")
     boolean delete(@Param("room_id") int room_id);

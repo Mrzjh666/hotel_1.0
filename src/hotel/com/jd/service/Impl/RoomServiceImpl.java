@@ -31,6 +31,7 @@ public class RoomServiceImpl implements RoomService {
     public ArrayList<Room> findRoomByType(String room_type, int currentPage, PageParms parms) {
         if(room_type == null)
             room_type="";
+
         parms.setAllCount(roomMapper.getRecordNum(room_type));
         parms.setAllPageCount((parms.getAllCount()+parms.getPageSize()-1)/parms.getPageSize());
         if(parms.getAllPageCount()>0 && currentPage> parms.getAllPageCount())
@@ -75,11 +76,14 @@ public class RoomServiceImpl implements RoomService {
     @Transactional(readOnly=false)
     @Override
     public void update(Room room) {
+        System.out.println(room.toString()+"service");
         roomMapper.update(room);
     }
     @Transactional(readOnly=false)
     @Override
     public void delete(int roomId) {
+
+
         roomMapper.delete(roomId);
     }
 }

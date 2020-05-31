@@ -3,6 +3,7 @@ package hotel.com.jd.controller;
 import hotel.com.jd.domain.Room;
 import hotel.com.jd.service.RoomService;
 import hotel.com.jd.util.PageParms;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,16 +21,16 @@ public class RoomController {
     @Autowired
     @Qualifier("roomService")
     private RoomService roomService;
-    @RequestMapping(value = "/room/searchByType")
-    public ModelAndView searchByType(@RequestParam(value = "roomType",required = false) String room_type, int currentPage, ModelAndView mv, @RequestParam(required = false) String delResult){
+    @RequestMapping(value = "/room/searchByRoomType")
+    public ModelAndView searchByType(String room_type,  @RequestParam(required = false)int currentPage,  @RequestParam(required = false) String delResult){
         PageParms parms = new PageParms();
-
+        ModelAndView mv= new ModelAndView();
         mv.addObject("allRoom",roomService.findRoomByType(room_type,currentPage,parms));
         mv.addObject("currentPage",parms.getCurrentPage());
         mv.addObject("allCount",parms.getAllCount());
         mv.addObject("allPageCount",parms.getAllPageCount());
         mv.addObject("searchRoom_type",room_type);
-        mv.setViewName("/roomtable");
+        mv.setViewName("/jsp/room//roomtable");
         return mv;
     }
     @RequestMapping("/room/openAdd")
@@ -45,11 +46,11 @@ public class RoomController {
             mv.addObject("result","room添加失败");
         }
         finally {
-            mv.setViewName("/room/room_add");
+            mv.setViewName("/jsp/room/roomtable");
             return mv;
         }
     }
-    @RequestMapping(value = "/room/openUpdade")
+    @RequestMapping(value = "/room/openUpdate")
     public ModelAndView openUpdate(int room_id,ModelAndView mv){
         Room room = roomService.findRoomById(room_id);
         mv.addObject("room",room);
@@ -57,8 +58,9 @@ public class RoomController {
         return mv;
     }
     @RequestMapping(value = "/room/update")
-    public ModelAndView update(Room room,ModelAndView mv){
+    public ModelAndView update( Room room, ModelAndView mv){
         try{
+            System.out.println(room.toString()+"controller");
             roomService.update(room);
             mv.addObject("result","room更新成功");
         }catch (Exception e){
@@ -66,24 +68,24 @@ public class RoomController {
         }
         finally {
             mv.addObject("room",room);
-            mv.setViewName("room_update");
+            mv.setViewName("/jsp/room/roomtable");
             return mv;
         }
     }
     @RequestMapping(value = "/room/delete")
-    public ModelAndView delete(int room_id,String room_type,int currentPage,ModelAndView mv){
-        String delResult ="";
+    public ModelAndView delete(int room_id){
+        ModelAndView mv = new ModelAndView();
         try{
+            System.out.println("new in room_delete_controller");
             roomService.delete(room_id);
-            delResult= URLEncoder.encode("删除成功","utf-8");
+            mv.addObject("result","room删除成功");
         }
         catch (Exception e){
+            mv.addObject("result","room删除失败");
             e.printStackTrace();
         }
         finally {
-            String url="./room/searchByType?room_type="+room_type+
-                    "&currentPage="+currentPage+"&delResult="+delResult;
-            mv.setView(new RedirectView(url));
+            mv.setViewName("/jsp/room//roomtable");
             return mv;
         }
     }
