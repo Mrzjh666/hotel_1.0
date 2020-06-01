@@ -2,6 +2,7 @@ package hotel.com.jd.mapper;
 
 import hotel.com.jd.domain.User;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * RoomMapper接口
  * @author zhu
  */
-
+@Component
 public interface UserMapper {
     /**
      * @info String

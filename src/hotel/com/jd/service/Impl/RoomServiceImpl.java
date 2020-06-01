@@ -37,7 +37,7 @@ public class RoomServiceImpl implements RoomService {
         if(parms.getAllPageCount()>0 && currentPage> parms.getAllPageCount())
             parms.setCurrentPage(parms.getAllPageCount());
         else
-            if(currentPage < 1)
+            if(currentPage <= 1)
                 parms.setCurrentPage(1);
             else
                 parms.setCurrentPage(currentPage);

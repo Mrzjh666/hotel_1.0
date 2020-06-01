@@ -5,32 +5,39 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
+/**
+ * MealMapper接口
+ * @Author cyb
+ * @Date 2020/5/31 21:29
+ */
 
 @Component
 public interface MealMapper {
-
-    @Insert("insert into meal(meal_type,meal_name,meal_explain,emp_id,meal_picpath,hotel_id,hotel_name,hotel_grade) value (#{meal_type},#{meal_name},#{meal_explain},#{emp_id},#{meal_picpath},#{hotel_id},#{hotel_name},#{hotel_grade})")
-    boolean insert(Meal m);
-
-    @Delete("DELETE FROM hotel.meal WHERE meal_id = #{meal_id}")
-    boolean delete(@Param("meal_id")int meal_id);
-
-    @Update("update hotel.meal set meal_type=#{meal_type},meal_name=#{meal_name},meal_explain=#{meal_explain},emp_id=#{emp_id},meal_picpath=#{meal_picpath},hotel_id=#{hotel_id},hotel_name=#{hotel_name},hotel_grade=#{hotel_grade} WHERE meal_id=#{meal_id}")
-    boolean update(Meal m);
-
+//    @Select("select * from hotel.meal where meal_no=#{meal_no}")
+//    Meal findMealByName(@Param("meal_no") String meal_no);
+//    /**获取总类型房间记录数，如果房间为空，访问所有记录数
+//     * @info meal_type
+//     * @return 该类型房间个数
+//     */
+    @Select("select count(meal_name) as AllRecord from hotel.meal where meal_name like concat('%',#{meal_name},'%')")
+    int getRecordNum(@Param("meal_name") String meal_name);
+    /**
+     * @param meal_id
+     * @return Meal对象，无就返回null
+     */
     @Select("select * from hotel.meal where meal_id=#{meal_id}")
-    List<Meal> getMealByid(@Param("meal_id")int meal_id);
+    Meal findMealById(@Param("meal_id") int meal_id);
 
-    @Select("select count(meal_type) as AllRecord from hotel.meal where meal_type like concat('%',#{meal_type},'%')")
-    int getRecordNum(@Param("meal_type")String meal_type);
-
-    @Select("select * from hotel.meal where meal_type like concat('%',#{meal_type},'%') limit #{start_place},#{size}")
-    ArrayList<Meal> findMealByType(@Param("meal_type")String meal_type, @Param("start_place") int start_place, @Param("size")int size);
-
-    @Select("select count(hotel_id) as AllRecord from hotel.meal where hotel_id=#{hotel_id}")
-    int getRecordNumByid(@Param("hotel_id")int hotel_id);
-
-    @Select("select * from hotel.meal where hotel_id=#{hotel_id} limit #{start_place},#{size}")
-    ArrayList<Meal> findMealByHotel_id(int hotel_id, @Param("start_place") int start_place, @Param("size")int size);
+    /**
+     * @info meal_name  start_place size
+     * @return Meal集合，其中全部该类型的房子
+     */
+    @Select("select * from hotel.meal where meal_name like concat('%',#{meal_name},'%') limit #{start_place},#{size}")
+    ArrayList<Meal> findMealByName(@Param("meal_name") String meal_type,@Param("start_place") int start_place,@Param("size")int size);
+    @Update("update hotel.meal set meal_type=#{meal_type},meal_name=#{meal_name},meal_price=#{meal_price} where meal_id=#{meal_id}")
+    boolean update(Meal meal);
+    @Delete("delete from hotel.meal where meal_id=#{meal_id}")
+    boolean delete(@Param("meal_id") int meal_id);
+    @Insert("insert into Meal(meal_type,meal_name,meal_price,meal_explain,emp_id,meal_picpath,hotel_id) values(#{meal_type},#{meal_name},#{meal_price},#{meal_explain},#{emp_id},#{meal_picpath},#{hotel_id})")
+    boolean insert(Meal meal);
 }

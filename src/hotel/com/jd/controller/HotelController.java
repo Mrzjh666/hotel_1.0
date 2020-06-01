@@ -44,7 +44,7 @@ public class HotelController {
                 return mv;
             }
         }
-        @RequestMapping(value = "/room/openUpdate")
+        @RequestMapping(value = "/hotel/openUpdate")
         public ModelAndView openUpdate(int hotel_id,ModelAndView mv){
             Hotel hotel = hotelService.findHotelById(hotel_id);
             mv.addObject("hotel",hotel);
