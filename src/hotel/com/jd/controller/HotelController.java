@@ -47,7 +47,7 @@ public class HotelController {
         }
 
         @RequestMapping(value = "/hotel/delete")
-        public ModelAndView delete(int hotel_id,int curr){
+        public ModelAndView delete(@RequestParam("hotel_id") int hotel_id,@RequestParam("currentPage") int currentPage){
             ModelAndView mv = new ModelAndView();
             try{
                 System.out.println("new in hotel_delete_controller");
