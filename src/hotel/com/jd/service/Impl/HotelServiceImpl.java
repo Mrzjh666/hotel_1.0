@@ -21,6 +21,7 @@ public class HotelServiceImpl implements HotelService {
     @Transactional(readOnly=false)
     @Override
     public void insert(Hotel hotel) {
+        System.out.println(hotel.toString()+"S");
         hotelMapper.insert(hotel);
     }
     @Transactional(readOnly=false)

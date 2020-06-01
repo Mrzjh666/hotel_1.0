@@ -12,7 +12,7 @@ public interface HotelMapper {
     public void delete(@Param("hotel_id")int hotel_id) ;
     @Update("update hotel.hotel set hotel_loc=#{hotel_loc},hotel_totalincome=#{hotel_totalincome},hotel_roomincome=#{hotel_roomincome},hotel_mealincome=#{hotel_mealincome} where hotel_id=#{hotel_id}")
     public void update(Hotel hotel) ;
-    @Insert("insert into hotel_hotel(hotel_loc,hotel_totalincome,hotel_roomincome,hotel_mealincome) values(#{hotel_loc},#{hotel_totalincome},#{hotel_roomincome},#{hotel_mealincome})")
+    @Insert("insert into hotel.hotel(hotel_loc,hotel_totalincome,hotel_roomincome,hotel_mealincome) values(#{hotel_loc},#{hotel_totalincome},#{hotel_roomincome},#{hotel_mealincome})")
     public void insert(Hotel hotel) ;
     @Select("select * from hotel.hotel where hotel_id=#{hotel_id}")
     public Hotel findHotelById(@Param("hotel_id")int hotel_id) ;

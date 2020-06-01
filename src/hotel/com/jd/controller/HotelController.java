@@ -34,6 +34,7 @@ public class HotelController {
         @RequestMapping("/hotel/save")
         public ModelAndView save(Hotel hotel, ModelAndView mv){
             try {
+                System.out.println(hotel.toString()+"C");
                 hotelService.insert(hotel);
                 mv.addObject("result","hotel添加成功");
             }catch (Exception e){
@@ -44,30 +45,9 @@ public class HotelController {
                 return mv;
             }
         }
-        @RequestMapping(value = "/hotel/openUpdate")
-        public ModelAndView openUpdate(int hotel_id,ModelAndView mv){
-            Hotel hotel = hotelService.findHotelById(hotel_id);
-            mv.addObject("hotel",hotel);
-            mv.setViewName("/jsp/hotel/hotel_update");
-            return mv;
-        }
-        @RequestMapping(value = "/hotel/update")
-        public ModelAndView update( Hotel hotel, ModelAndView mv){
-            try{
-                System.out.println(hotel.toString()+"controller");
-                hotelService.update(hotel);
-                mv.addObject("result","hotel更新成功");
-            }catch (Exception e){
-                mv.addObject("result","hotel更新失败");
-            }
-            finally {
-                mv.addObject("hotel",hotel);
-                mv.setViewName("/jsp/hotel/hoteltable");
-                return mv;
-            }
-        }
+
         @RequestMapping(value = "/hotel/delete")
-        public ModelAndView delete(int hotel_id){
+        public ModelAndView delete(int hotel_id,int curr){
             ModelAndView mv = new ModelAndView();
             try{
                 System.out.println("new in hotel_delete_controller");
