@@ -11,5 +11,4 @@ public interface EquipmentService {
     void insert(Equipment equipment);
     void update(Equipment equipment);
     void delete(int equId);
-    
 }

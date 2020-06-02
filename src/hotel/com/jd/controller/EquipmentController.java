@@ -53,6 +53,7 @@ public class EquipmentController {
     @RequestMapping("/equipment/save")
     public ModelAndView save(Equipment equipment, ModelAndView mv){
         try {
+            System.out.println(equipment.toString()+"C save");
             equipmentService.insert(equipment);
             mv.addObject("result","equipment添加成功");
         }catch (Exception e){

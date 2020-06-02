@@ -51,6 +51,8 @@ public class EquipmentServiceImpl implements EquipmentService {
     @Transactional(readOnly=false)
     @Override
     public void insert(Equipment equipment) {
+
+        System.out.println(equipment.toString());
         equipmentMapper.insert(equipment);
     }
     @Transactional(readOnly=false)

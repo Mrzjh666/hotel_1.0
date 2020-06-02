@@ -32,7 +32,7 @@ public interface EquipmentMapper {
     boolean update(Equipment equipment);
     @Delete("delete from hotel.equipment where equ_id=#{equ_id}")
     boolean delete(@Param("equ_id") int equ_id);
-    @Insert("insert into hotel.equipment (equ_type,equ_name,equ_num,equ_explain,equ_mark,emp_id) values(#{equ_type},#{equ_name},#{equ_num},#{equ_explain},#{equ_mark},#{emp_id}")
+    @Insert("insert into hotel.equipment (equ_type,equ_name,equ_num,equ_explain,equ_mark,equ_picpath,emp_id) values(#{equ_type},#{equ_name},#{equ_num},#{equ_explain},#{equ_mark},#{equ_picpath},#{emp_id})")
     boolean insert(Equipment equipment);
 }
 
