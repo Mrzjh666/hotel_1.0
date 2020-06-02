@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
-@Controller("/jsp")
+@Controller
+
 public class ManagerController {
     @Autowired
     @Qualifier("managerService")
@@ -36,23 +37,23 @@ public class ManagerController {
         }
 //        return mv;
     }
-    @RequestMapping(value = "/manager/link")
+    @RequestMapping(value = "/jsp/manager/link")
     public String link(){
         return "index2";
     }
-    @RequestMapping(value = "/manager/findManager")
-    public ModelAndView findManagerByName(@RequestParam("managerName") String manager_name,@RequestParam(required=false ) int currentPage){
+    @RequestMapping(value = "/jsp/manager/findByName")
+    public ModelAndView findByName(@RequestParam("managerName") String managerName,@RequestParam(required=false ) int currentPage){
         ModelAndView mv = new ModelAndView();
         PageParms parms = new PageParms();
-        mv.addObject("allManager",managerService.findManagerByName(manager_name,currentPage,parms));
+        mv.addObject("allManager",managerService.findManagerByName(managerName,currentPage,parms));
         mv.addObject("currentPage",parms.getCurrentPage());
         mv.addObject("allCount",parms.getAllCount());
         mv.addObject("allPageCount",parms.getAllPageCount());
-        mv.addObject("searchManager_name",manager_name);
+        mv.addObject("searchManager_name",managerName);
         mv.setViewName("/jsp/manager/managertable");
         return mv;
     }
-    @RequestMapping(value = "/manager/save")
+    @RequestMapping(value = "/jsp/manager/save")
     public ModelAndView save(Manager manager, ModelAndView mv){
         try {
             managerService.insert(manager);
@@ -65,23 +66,24 @@ public class ManagerController {
             return mv;
         }
     }
-    @RequestMapping(value = "/manager/openAdd")
+    @RequestMapping(value = "/jsp/manager/openAdd")
     public String openAdd(){
         return "/jsp/manager/manager_add";
     }
-    @RequestMapping(value = "/manager/openUpdate")
-    public ModelAndView openUpdate(int manager_id,ModelAndView mv){
-        Manager manager = managerService.findManagerById(manager_id);
+    @RequestMapping(value = "/jsp/manager/openUpdate")
+    public ModelAndView openUpdate(ModelAndView mv,HttpSession session){
+        Manager manager = (Manager)session.getAttribute("manager");
+        System.out.println(manager.toString()+"cccc");
         mv.addObject("manager",manager);
         mv.setViewName("/jsp/manager/manager_update");
         return mv;
     }
-    @RequestMapping(value = "/manager/update")
-    public ModelAndView update( Manager manager, ModelAndView mv){
+    @RequestMapping(value = "/jsp/manager/update")
+    public ModelAndView update( Manager manager, ModelAndView mv,HttpSession session){
         try{
-
+            System.out.println(manager.toString()+"c");
             managerService.update(manager);
-            mv.addObject("result","manager更新成功");
+            mv.addObject("result", "manager更新成功");
         }catch (Exception e){
             mv.addObject("result","manager更新失败");
         }
@@ -91,7 +93,7 @@ public class ManagerController {
             return mv;
         }
     }
-    @RequestMapping("/manager/delete")
+    @RequestMapping("/jsp/manager/delete")
     public ModelAndView delete(int manager_id, HttpSession session){
         ModelAndView mv = new ModelAndView();
         Manager manager = (Manager) session.getAttribute("manager");

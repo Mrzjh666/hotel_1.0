@@ -43,7 +43,7 @@ public class MealServiceImpl implements MealService {
             parms.setCurrentPage(1);
         else
             parms.setCurrentPage(currentPage);
-        int start_place = (parms.getAllPageCount()-1)*parms.getPageSize();
+        int start_place = (parms.getCurrentPage()-1)*parms.getPageSize();
         int size = parms.getPageSize();
         ArrayList<Meal> list = mealMapper.findMealByName(meal_name,start_place,size);
 

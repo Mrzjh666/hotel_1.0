@@ -37,11 +37,11 @@ public class RoomServiceImpl implements RoomService {
         if(parms.getAllPageCount()>0 && currentPage> parms.getAllPageCount())
             parms.setCurrentPage(parms.getAllPageCount());
         else
-            if(currentPage <= 1)
+            if(currentPage <=1)
                 parms.setCurrentPage(1);
             else
                 parms.setCurrentPage(currentPage);
-        int start_place = (parms.getAllPageCount()-1)*parms.getPageSize();
+        int start_place = (parms.getCurrentPage()-1)*parms.getPageSize();
         int size = parms.getPageSize();
         ArrayList<Room> list = roomMapper.findRoomByType(room_type,start_place,size);
 
@@ -53,7 +53,7 @@ public class RoomServiceImpl implements RoomService {
         if(room_type == null)
             room_type="";
         if(room_flag == null)
-            room_flag="";
+            room_flag="未入住";
         parms.setAllCount(roomMapper.getRecordNum(room_type));
         parms.setAllPageCount((parms.getAllCount()+parms.getPageSize()-1)/parms.getPageSize());
         if(parms.getAllPageCount()>0 && currentPage> parms.getAllPageCount())

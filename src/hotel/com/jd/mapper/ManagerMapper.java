@@ -24,7 +24,7 @@ public interface ManagerMapper {
     void insert(Manager manager);
     @Select("select * from hotel.manager where manager_id=#{manager_id}")
     Manager findManagerById(int manager_id);
-    @Update("update hotel.manager set manager_name=#{manager_name},manager_account=#{manager_account},manager_password=#{manager_password},manager_phone=#{manager_phone},hotel_id=#{hotel_id}")
+    @Update("update hotel.manager set manager_name=#{manager_name},manager_account=#{manager_account},manager_password=#{manager_password},manager_phone=#{manager_phone},hotel_id=#{hotel_id} where manager_id=#{manager_id}")
     void update(Manager manager);
     @Delete("delete from hotel.manager where manager_id=#{manager_id}")
     void delete(int manager_id);

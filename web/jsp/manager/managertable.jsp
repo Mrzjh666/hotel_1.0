@@ -1,20 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: 朱家豪
-  Date: 20/06/01
-  Time: 22:46
+  Date: 19/12/09
+  Time: 13:38
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="hotel.com.jd.domain.Manager" %>
+<%@ page import="hotel.com.jd.domain.Manager"%>
 <%
     String contextPath = request.getContextPath();
     request.setAttribute("contextPath", contextPath);
     String rs = (String)request.getAttribute("result");
 %>
-<%@page import="hotel.com.jd.domain.Manager"%>
 <%
     Manager manager = (Manager) request.getSession().getAttribute("manager");
     if(manager==null)
@@ -76,7 +76,7 @@
 </head>
 <body>
 
-<div style="height:50px;line-height:50px;font-size:25px;vertical-align: middle;text-align: center" class="bg-primary">皇家酒店房间管理</div>
+<div style="height:50px;line-height:50px;font-size:25px;vertical-align: middle;text-align: center" class="bg-primary">皇家酒店管理员管理</div>
 
 <div class="row" style="padding:10px 10px">
 
@@ -86,27 +86,30 @@
 
         <!-- 查询块 -->
         <div class="search" >
-            <form class="form-inline" name="managerForm" action="../manager/findManager" method="post">
+            <form class="form-inline" name="managerForm" action="../manager/findByName" method="post">
+                <!-- <input type="hidden" name="method" value="search"/> -->
                 <input type="text" class="form-control" name="managerName" />
                 <input type="hidden" class="form-control" name="currentPage" value="1" />
                 <input type="submit" class="btn btn-primary" value="查   询" />&nbsp;&nbsp;
             </form>
         </div>
-        <!--酒店信息显示-->
+        <!-- 员工信息显示-->
         <div style="padding-top: 10px;">
             <table class="form_boxA" cellpadding="0" cellspacing="0" >
                 <tr>
                     <th>管理员Id</th>
+                    <th>管理员姓名</th>
                     <th>管理员账户</th>
-                    <th>管理员电话</th>
-                    <th>所属酒店id</th>
+                    <th>所属酒店</th>
+                    <th colspan=2>操作</th>
                 </tr>
                 <c:forEach items="${requestScope.allManager}" var="list">
                     <tr>
-                        <th style="vertical-align: middle;">${list.manager_id}</th>
+                       <th style="vertical-align: middle;">${list.manager_id}</th>
+                        <th style="vertical-align: middle;">${list.manager_name}</th>
                         <th style="vertical-align: middle;">${list.manager_account}</th>
-                        <th style="vertical-align: middle;">${list.manager_phone}</th>
                         <th style="vertical-align: middle;">${list.hotel_id}</th>
+                        <th style="vertical-align: middle;">管理员只可修改本人信息</th>
                     </tr>
                 </c:forEach>
             </table>
@@ -114,12 +117,12 @@
 
         <div class="text-center">
             <ul class="pagination">
-                <li><a href="../manager/findManagerByName?currentPage=1&manager_name=${searchManager_name}">首页</a></li>
+                <li><a href="../manager/findByName?currentPage=1&manager_name=${searchManager_name}">首页</a></li>
                 <li><a
-                        href="../manager/findManagerByName?currentPage=${currentPage<2?1:currentPage-1}&manager_name=${searchManager_name}">上一页</a></li>
+                        href="../manager/findByName?currentPage=${currentPage<2?1:currentPage-1}&manager_name=${searchManager_name}">上一页</a></li>
                 <li><a
-                        href="../manager/findManagerByName?currentPage=${(currentPage+1)>allPageCount?allPageCount:(currentPage+1)}&manager_name=${searchManager_name}">下一页</a></li>
-                <li><a href="../manager/findManagerByName?currentPage=${allPageCount}&manager_name=${searchManager_name}">末页</a></li>
+                        href="../manager/findByName?currentPage=${(currentPage+1)>allPageCount?allPageCount:(currentPage+1)}&manager_name=${searchManager_name}">下一页</a></li>
+                <li><a href="../manager/findByName?currentPage=${allPageCount}&manager_name=${searchManager_name}">末页</a></li>
             </ul>
         </div>
     </div>
@@ -128,3 +131,4 @@
 
 </body>
 </html>
+
