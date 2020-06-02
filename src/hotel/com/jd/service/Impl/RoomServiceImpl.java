@@ -63,7 +63,7 @@ public class RoomServiceImpl implements RoomService {
             parms.setCurrentPage(1);
         else
             parms.setCurrentPage(currentPage);
-        int start_place = (parms.getAllPageCount()-1)*parms.getPageSize();
+        int start_place = (parms.getCurrentPage()-1)*parms.getPageSize();
         int size = parms.getPageSize();
         ArrayList<Room> list = roomMapper.findRoomByTypeAndFlag(room_type,room_flag,start_place,size);
         return list;

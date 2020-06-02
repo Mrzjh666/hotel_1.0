@@ -140,12 +140,12 @@
 
         <div class="text-center">
             <ul class="pagination">
-                <li><a href="../room/searchByRoomType?currentPage=1&room_type=${searchRoom_type}">首页</a></li>
+                <li><a href="../room/searchByRoomType?currentPage=1&roomType=${searchRoom_type}">首页</a></li>
                 <li><a
-                        href="../room/searchByRoomType?currentPage=${currentPage<2?1:currentPage-1}&room_type=${searchRoom_type}">上一页</a></li>
+                        href="../room/searchByRoomType?currentPage=${currentPage<2?1:currentPage-1}&roomType=${searchRoom_type}">上一页</a></li>
                 <li><a
-                        href="../room/searchByRoomType?currentPage=${(currentPage+1)>allPageCount?allPageCount:(currentPage+1)}&room_type=${searchRoom_type}">下一页</a></li>
-                <li><a href="../room/searchByRoomType?currentPage=${allPageCount}&room_type=${searchRoom_type}">末页</a></li>
+                        href="../room/searchByRoomType?currentPage=${(currentPage+1)>allPageCount?allPageCount:(currentPage+1)}&roomType=${searchRoom_type}">下一页</a></li>
+                <li><a href="../room/searchByRoomType?currentPage=${allPageCount}&roomType=${searchRoom_type}">末页</a></li>
             </ul>
         </div>
             </div>

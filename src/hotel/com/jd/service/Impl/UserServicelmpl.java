@@ -36,7 +36,7 @@ public class UserServicelmpl implements UserService {
             parms.setCurrentPage(1);
         else
             parms.setCurrentPage(currentPage);
-        int start_place = (parms.getAllPageCount()-1)*parms.getPageSize();
+        int start_place = (parms.getCurrentPage()-1)*parms.getPageSize();
         int size = parms.getPageSize();
         ArrayList<User> list = userMapper.findUserByName(user_name,start_place,size);
         return list;

@@ -11,7 +11,7 @@ import hotel.com.jd.domain.Manager;
 /**
  * 判断用户权限的Spring MVC的拦截器
  */
-public class AuthorizedInterceptor implements HandlerInterceptor
+public class  AuthorizedInterceptor implements HandlerInterceptor
 {
 
     /** 定义不需要拦截的请求 */

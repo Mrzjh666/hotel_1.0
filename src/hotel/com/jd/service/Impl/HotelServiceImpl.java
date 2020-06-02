@@ -69,7 +69,7 @@ public class HotelServiceImpl implements HotelService {
             parms.setCurrentPage(1);
         else
             parms.setCurrentPage(currentPage);
-        int start_place = (parms.getAllPageCount()-1)*parms.getPageSize();
+        int start_place = (parms.getCurrentPage()-1)*parms.getPageSize();
         int size = parms.getPageSize();
         ArrayList<Hotel> list = hotelMapper.findHotelAll(start_place,size);
         return list;
