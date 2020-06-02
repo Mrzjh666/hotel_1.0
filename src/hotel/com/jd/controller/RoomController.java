@@ -3,17 +3,12 @@ package hotel.com.jd.controller;
 import hotel.com.jd.domain.Room;
 import hotel.com.jd.service.RoomService;
 import hotel.com.jd.util.PageParms;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
-
-import java.net.URLEncoder;
 
 @Controller
 @RequestMapping("/jsp")

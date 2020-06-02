@@ -13,7 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/jsp")
 public class HotelController {
-        @Autowired
+
+    @Autowired
         @Qualifier("hotelService")
         private HotelService hotelService;
         @RequestMapping(value = "/hotel/searchHotelAll")
@@ -41,7 +42,8 @@ public class HotelController {
                 mv.addObject("result","hotel添加失败");
             }
             finally {
-                mv.setViewName("/jsp/hotel/hoteltable");
+                mv.addObject("hotel_id",hotel.getHotel_id());
+                mv.setViewName("/jsp/manager/manager_add");
                 return mv;
             }
         }
@@ -52,6 +54,7 @@ public class HotelController {
             try{
                 System.out.println("new in hotel_delete_controller");
                 hotelService.delete(hotel_id);
+
                 mv.addObject("result","hotel删除成功");
             }
             catch (Exception e){
