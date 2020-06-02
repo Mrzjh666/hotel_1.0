@@ -36,7 +36,7 @@ public class MealController {
         mv.addObject("currentPage",parms.getCurrentPage());
         mv.addObject("allCount",parms.getAllCount());
         mv.addObject("allPageCount",parms.getAllPageCount());
-        mv.addObject("searchMeal_type",mealName);
+        mv.addObject("searchMeal_name",mealName);
         mv.setViewName("/jsp/meal//mealtable");
         return mv;
     }

@@ -3,9 +3,11 @@ package hotel.com.jd.controller;
 import hotel.com.jd.domain.User;
 import hotel.com.jd.service.UserService;
 import hotel.com.jd.util.PageParms;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,29 +15,37 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.net.URLEncoder;
 
+/**
+ * @Description
+ * @Author cyb
+ * @Date 2020/6/1 8:41
+ */
+
 @Controller
-@RequestMapping("/user")
-public class UserController  {
+@RequestMapping("/jsp")
+public class UserController {
     @Autowired
     @Qualifier("userService")
     private UserService userService;
-    @RequestMapping("/searchByName")
-    public ModelAndView searchByName(String user_name, int currentPage, ModelAndView mv,@RequestParam(required = false) String delResult){
+    @RequestMapping(value = "/user/searchByUserName")
+    public ModelAndView searchByName(@RequestParam("userName") String userName, @RequestParam(required = false)int currentPage, @RequestParam(required = false) String delResult){
         PageParms parms = new PageParms();
-        mv.addObject("allUser",userService.findUserByName(user_name,currentPage,parms));
+        ModelAndView mv= new ModelAndView();
+        System.out.println(userName+"controller");
+        mv.addObject("allUser",userService.findUserByName(userName,currentPage,parms));
         mv.addObject("currentPage",parms.getCurrentPage());
         mv.addObject("allCount",parms.getAllCount());
         mv.addObject("allPageCount",parms.getAllPageCount());
-        mv.addObject("searchUser_name",user_name);
-        mv.setViewName("/user/usertable");
+        mv.addObject("searchUser_name",userName);
+        mv.setViewName("/jsp/user//usertable");
         return mv;
     }
-    @RequestMapping("/openAdd")
+    @RequestMapping("/user/openAdd")
     public String openAdd(){
-        return "/user/user_add";
+        return "/jsp/user/user_add";
     }
-    @RequestMapping("/save")
-    public ModelAndView save(User user,ModelAndView mv){
+    @RequestMapping("/user/save")
+    public ModelAndView save(User user, ModelAndView mv){
         try {
             userService.insert(user);
             mv.addObject("result","user添加成功");
@@ -43,20 +53,21 @@ public class UserController  {
             mv.addObject("result","user添加失败");
         }
         finally {
-            mv.setViewName("/user/user_add");
+            mv.setViewName("/jsp/user/usertable");
             return mv;
         }
     }
-    @RequestMapping(value = "/openUpdade")
+    @RequestMapping(value = "/user/openUpdate")
     public ModelAndView openUpdate(int user_id,ModelAndView mv){
         User user = userService.findUserById(user_id);
         mv.addObject("user",user);
-        mv.setViewName("/user/user_update");
+        mv.setViewName("/jsp/user/user_update");
         return mv;
     }
-    @RequestMapping(value = "/update")
-    public ModelAndView update(User user,ModelAndView mv){
+    @RequestMapping(value = "/user/update")
+    public ModelAndView update( User user, ModelAndView mv){
         try{
+            System.out.println(user.toString()+"controller");
             userService.update(user);
             mv.addObject("result","user更新成功");
         }catch (Exception e){
@@ -64,26 +75,27 @@ public class UserController  {
         }
         finally {
             mv.addObject("user",user);
-            mv.setViewName("user/user_update");
+            mv.setViewName("/jsp/user/usertable");
             return mv;
         }
     }
-    @RequestMapping(value = "/delete")
-    public ModelAndView delete(int user_id,String user_name,int currentPage,ModelAndView mv){
-        String delResult ="";
+    @RequestMapping(value = "/user/delete")
+    public ModelAndView delete(int user_id){
+        ModelAndView mv = new ModelAndView();
         try{
+            System.out.println("new in user_delete_controller");
             userService.delete(user_id);
-            delResult= URLEncoder.encode("删除成功","utf-8");
+            mv.addObject("result","user删除成功");
         }
         catch (Exception e){
+            mv.addObject("result","user删除失败");
             e.printStackTrace();
         }
         finally {
-            String url="../user/searchByName?user_name="+user_name+
-                    "&currentPage="+currentPage+"&delResult="+delResult;
-            mv.setView(new RedirectView(url));
+            mv.setViewName("/jsp/user//usertable");
             return mv;
         }
     }
 }
+
 

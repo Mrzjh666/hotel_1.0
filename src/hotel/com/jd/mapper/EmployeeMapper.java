@@ -43,7 +43,7 @@ public interface EmployeeMapper {
     boolean update(Employee employee);
     @Delete("delete from hotel.employee where emp_id=#{emp_id}")
     boolean delete(@Param("emp_id") int emp_id);
-    @Insert("insert into Employee(emp_name,emp_phone,emp_no,emp_pos,emp_salary,hotel_id) values(#{emp_name},#{emp_phone},#{emp_no},#{emp_pos},#{emp_salary},#{hotel_id})")
+    @Insert("insert into hotel.employee (emp_name,emp_phone,emp_no,emp_pos,emp_salary,hotel_id) values(#{emp_name},#{emp_phone},#{emp_no},#{emp_pos},#{emp_salary},#{hotel_id})")
     boolean insert(Employee employee);
 }
 

@@ -39,7 +39,6 @@ public class UserServicelmpl implements UserService {
         int start_place = (parms.getAllPageCount()-1)*parms.getPageSize();
         int size = parms.getPageSize();
         ArrayList<User> list = userMapper.findUserByName(user_name,start_place,size);
-
         return list;
     }
     @Transactional(readOnly=false)

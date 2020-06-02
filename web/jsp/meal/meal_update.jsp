@@ -54,12 +54,12 @@
                 </tr>
                 <tr>
                     餐品类型：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="meal_type" id="meal_type" value="${meal.meal_type}">
-                    <option name="meal_type" value="typeA">凉菜</option>
-                    <option name="meal_type" value="圆床房">热菜</option>
-                    <option name="meal_type" value="typeA">主食</option>
-                    <option name="meal_type" value="typeA">汤品</option>
-                    <option name="meal_type" value="大床房">甜品</option>
-                    <option name="meal_type" value="标准间">饮品</option>
+                    <option name="meal_type" value="凉菜">凉菜</option>
+                    <option name="meal_type" value="热菜">热菜</option>
+                    <option name="meal_type" value="主食">主食</option>
+                    <option name="meal_type" value="汤品">汤品</option>
+                    <option name="meal_type" value="甜品">甜品</option>
+                    <option name="meal_type" value="饮品">饮品</option>
                 </select>
                 </tr>
                 <tr>

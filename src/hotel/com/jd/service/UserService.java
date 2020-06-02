@@ -10,6 +10,6 @@ public interface UserService {
     ArrayList<User> findUserByName(String user_name, int currentPage,PageParms parms);
     void insert(User user);
     void update(User user);
-    void delete(int user_id);
+    void delete(int userId);
 }
 

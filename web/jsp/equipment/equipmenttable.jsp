@@ -2,15 +2,14 @@
   Created by IntelliJ IDEA.
   User: 25218
   Date: 2020/6/1
-  Time: 8:47
+  Time: 19:46
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="hotel.com.jd.domain.User" %>
+<%@ page import="hotel.com.jd.domain.Equipment" %>
 <%
     String contextPath = request.getContextPath();
     request.setAttribute("contextPath", contextPath);
@@ -78,7 +77,7 @@
 </head>
 <body>
 
-<div style="height:50px;line-height:50px;font-size:25px;vertical-align: middle;text-align: center" class="bg-primary">皇家酒店用户管理</div>
+<div style="height:50px;line-height:50px;font-size:25px;vertical-align: middle;text-align: center" class="bg-primary">皇家酒店健身器材管理</div>
 
 <div class="row" style="padding:10px 10px">
 
@@ -88,44 +87,48 @@
 
         <!-- 查询块 -->
         <div class="search" >
-            <form class="form-inline" name="userForm" action="../user/searchByUserName" method="post">
+            <form class="form-inline" name="equipmentForm" action="../equipment/searchByEquipmentType" method="post">
                 <!-- <input type="hidden" name="method" value="search"/> -->
-                <input type="text" class="form-control" name="userName" />
+                <input type="text" class="form-control" name="equipmentType" />
                 <input type="hidden" class="form-control" name="currentPage" value="1" />
                 <input type="submit" class="btn btn-primary" value="查   询" />&nbsp;&nbsp;
 
 
-                <input type="button" class="btn btn-danger" value="增   加" onclick="javascript:window.location='../user/openAdd'">
+                <input type="button" class="btn btn-danger" value="增   加" onclick="javascript:window.location='../equipment/openAdd'">
             </form>
         </div>
         <!-- 员工信息显示-->
         <div style="padding-top: 10px;">
             <table class="form_boxA" cellpadding="0" cellspacing="0" >
                 <tr>
-                    <th>用户ID</th>
-                    <th>用户姓名</th>
-                    <th>用户电话</th>
-                    <th>居住天数（天）</th>
-                    <th>住房ID</th>
+                    <th>器材Id</th>
+                    <th>器材类型</th>
+                    <th>器材名称</th>
+                    <th>器材数量</th>
+                    <th>器材作用</th>
+                    <th>器材备注</th>
+                    <th>维修员工ID</th>
                     <th colspan=2>操作</th>
                 </tr>
-                <c:forEach items="${requestScope.allUser }" var="list">
+                <c:forEach items="${requestScope.allEquipment }" var="list">
                     <tr>
-                        <th style="vertical-align: middle;">${list.user_id}</th>
-                        <th style="vertical-align: middle;">${list.user_name}</th>
-                        <th style="vertical-align: middle;">${list.user_phone}</th>
-                        <th style="vertical-align: middle;">${list.user_liveday}</th>
-                        <th style="vertical-align: middle;">${list.room_id}</th>
+                        <th style="vertical-align: middle;">${list.equ_id}</th>
+                        <th style="vertical-align: middle;">${list.equ_type}</th>
+                        <th style="vertical-align: middle;">${list.equ_name}</th>
+                        <th style="vertical-align: middle;">${list.equ_num}</th>
+                        <th style="vertical-align: middle;">${list.equ_explain}</th>
+                        <th style="vertical-align: middle;">${list.equ_mark}</th>
+                        <th style="vertical-align: middle;">${list.emp_id}</th>
                         <th>
 
-                            <a href="../user/openUpdate?user_id=${list.user_id}">
+                            <a href="../equipment/openUpdate?equ_id=${list.equ_id}">
                                 <H4> 修改<span class="glyphicon glyphicon-edit" aria-hidden="true" /></H4>
                             </a>
 
                         </th>
                         <th>
                             <H4>
-                                <a href="../user/delete?user_id=${list.user_id}&user_name=${list.user_name}&currentPage=${currentPage}">
+                                <a href="../equipment/delete?equ_id=${list.equ_id}&equ_type=${list.equ_type}&currentPage=${currentPage}">
                                     <span class="glyphicon glyphicon-remove" aria-hidden="true" />删除
                                 </a>
                             </H4>
@@ -137,12 +140,12 @@
 
         <div class="text-center">
             <ul class="pagination">
-                <li><a href="../user/searchByUserName?currentPage=1&user_name=${searchUser_name}">首页</a></li>
+                <li><a href="../equipment/searchByEquipmentType?currentPage=1&equ_type=${searchEquipment_type}">首页</a></li>
                 <li><a
-                        href="../user/searchByUserName?currentPage=${currentPage<2?1:currentPage-1}&user_name=${searchUser_name}">上一页</a></li>
+                        href="../equipment/searchByEquipmentType?currentPage=${currentPage<2?1:currentPage-1}&equ_type=${searchEquipment_type}">上一页</a></li>
                 <li><a
-                        href="../user/searchByUserName?currentPage=${(currentPage+1)>allPageCount?allPageCount:(currentPage+1)}&user_name=${searchUser_name}">下一页</a></li>
-                <li><a href="../user/searchByUserName?currentPage=${allPageCount}&user_name=${searchUser_name}">末页</a></li>
+                        href="../equipment/searchByEquipmentType?currentPage=${(currentPage+1)>allPageCount?allPageCount:(currentPage+1)}&equ_type=${searchEquipment_type}">下一页</a></li>
+                <li><a href="../equipment/searchByEquipmentType?currentPage=${allPageCount}&equ_type=${searchEquipment_type}">末页</a></li>
             </ul>
         </div>
     </div>
@@ -151,4 +154,5 @@
 
 </body>
 </html>
+
 

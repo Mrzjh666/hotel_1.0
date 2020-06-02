@@ -7,14 +7,14 @@ package hotel.com.jd.domain;
  */
 
 public class Meal{
-    private int meal_id;
-    private String meal_type;
-    private String meal_name;
-    private String meal_price;
-    private String meal_explain;
-    private int emp_id;
-    private String meal_picpath;
-    private int hotel_id;
+    private int meal_id;//餐品ID
+    private String meal_type;//餐品类型
+    private String meal_name;//餐品名称
+    private String meal_price;//餐品价格
+    private String meal_explain;//餐品注释
+    private int emp_id;//厨师ID
+    private String meal_picpath;//餐品图片路径
+    private int hotel_id;//酒店ID
 
     public int getMeal_id() {
         return meal_id;
