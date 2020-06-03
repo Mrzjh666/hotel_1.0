@@ -40,4 +40,6 @@ public interface UserMapper {
     boolean delete(@Param("user_id") int user_id);
     @Insert("insert into User(user_name,user_phone,user_liveday,room_id) values(#{user_name},#{user_phone},#{user_liveday},#{room_id})")
     boolean insert(User user);
+    @Select("select user_id from hotel.user where user_phone=#{user_phone}")
+    int getUserIdByPhone(@Param("user_phone") String user_phone);
 }

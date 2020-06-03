@@ -56,5 +56,10 @@ public class UserServicelmpl implements UserService {
     public void delete(int userId) {
         userMapper.delete(userId);
     }
+
+    @Override
+    public int findUserIdByPhone(String user_Phone) {
+        return userMapper.getUserIdByPhone(user_Phone);
+    }
 }
 

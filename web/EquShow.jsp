@@ -6,9 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.hotel.bean.Equiment" %>
-<%@ page import="com.hotel.dao.EquimentDAO" %>
-<%@ page import="java.util.ArrayList"%>
 <%
     String contextPath = request.getContextPath();
     request.setAttribute("contextPath", contextPath);
@@ -87,6 +84,13 @@
 <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
 <script src="js/classie.js"></script>
 <script>
+        $(document).ready(function() {
+
+           $.ajax({
+               url:"Equipment"
+           })
+        });
+
     var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
         showLeftPush = document.getElementById( 'showLeftPush' ),
         showRightPush = document.getElementById( 'showRightPush' ),
@@ -118,15 +122,6 @@
     </div>
 </div>
 <!-- contact -->
-<%
-    EquimentDAO dao = new EquimentDAO();
-    ArrayList<Equiment> list =dao.selectiEquimentAll();
-    if(list!=null && list.size()>0)
-    {
-        for(int i=0;i<list.size();)
-        {
-        if(list.size()%2==0){
-%>
 <div class="we-focus">
     <div class="container">
         <div class="focus-grids">
@@ -264,25 +259,8 @@
         <p><a target="_blank" href="login.html">系统管理中心</a></p>
     </div>
 </div>
-<!-- for bootstrap working -->
-<script src="js/bootstrap.js"></script>
-<!-- //for bootstrap working -->
-<!-- smooth scrolling -->
-<script type="text/javascript">
-    $(document).ready(function() {
-        /*
-            var defaults = {
-            containerID: 'toTop', // fading element id
-            containerHoverID: 'toTopHover', // fading element hover id
-            scrollSpeed: 1200,
-            easingType: 'linear'
-            };
-        */
-        $().UItoTop({ easingType: 'easeOutQuart' });
-    });
-</script>
-<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-<!-- //smooth scrolling -->
 
+<script src="js/bootstrap.js"></script>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 </body>
 </html>

@@ -35,7 +35,7 @@
 <div class="logDiv">
     <%--    <img class="logBanner" src="images/logBanner.png" />--%>
     <div class="banner-text">
-        <form class="form-inline" name="mealForm" action="../meal/save" method="post">
+        <form class="form-inline" name="mealForm" enctype="multipart/form-data" action="../meal/save" method="post">
             <div class="col-md-10" style="float: right;margin-left: -100px;margin-right: 200px;margin-top: 50px;">
                 <!-- 头部提示信息--><tr>
 
@@ -66,10 +66,16 @@
                         <input type="text" id="meal_price" name="meal_price" placeholder="输入餐品价格" />
                     </div>
                 </tr>
+
                 <tr>
                     <div class="form-group">
                         <img class="img1" src="images/价格.png" />
                         <input type="text" id="emp_id" name="emp_id" placeholder="输入厨师ID" />
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <img src="../../../images/酒店.png" /><input type="file" id="flie" name="file" value="选择菜品图片"  />
                     </div>
                 </tr>
                 <tr>

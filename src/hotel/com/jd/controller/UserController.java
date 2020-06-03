@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.net.URLEncoder;
 
 /**
@@ -45,9 +46,10 @@ public class UserController {
         return "/jsp/user/user_add";
     }
     @RequestMapping("/user/save")
-    public ModelAndView save(User user, ModelAndView mv){
+    public ModelAndView save(User user, ModelAndView mv, HttpSession session){
         try {
             userService.insert(user);
+            session.setAttribute("user_id",userService.findUserIdByPhone(user.getUser_phone()));
             mv.addObject("result","user添加成功");
         }catch (Exception e){
             mv.addObject("result","user添加失败");

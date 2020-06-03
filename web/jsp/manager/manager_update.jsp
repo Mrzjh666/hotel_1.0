@@ -63,25 +63,25 @@
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <img class="img1" src="../../../images/价格.png" /><input type="password" id="manager_password" name="manager_password"
+                        <img class="img1" src="../../images/coin08.png" /><input type="password" id="manager_password" name="manager_password"
                                                                                 placeholder="输入管理员密码" />
                     </div>
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <img class="img1" src="../../../images/价格.png" /><input type="password" id="manager_password1" name="manager_password1"
+                        <img class="img1" src="../../images/coin08.png" /><input type="password" id="manager_password1" name="manager_password1"
                                                                                 placeholder="再次确认管理员密码" />
                     </div>
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <img class="img1" src="../../../images/价格.png" /><input type="text" id="manager_phone" name="manager_phone"
+                        <img class="img1" src="../../images/coin07.png" /><input type="text" id="manager_phone" name="manager_phone"
                                                                                 placeholder="管理员电话号码" />
                     </div>
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <img src="../../../images/酒店.png" /><input type="hidden" id="hotel_id" name="hotel_id" value="${manager.hotel_id}" placeholder="当前所属酒店" />
+                        <img src="../../../images/酒店.png" /><input type="hidd。 en" id="hotel_id" name="hotel_id" value="${manager.hotel_id}" placeholder="当前所属酒店" />
                     </div>
                 </tr>
                 <tr>

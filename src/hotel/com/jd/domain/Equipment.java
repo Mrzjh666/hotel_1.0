@@ -15,7 +15,17 @@ public class Equipment {
     private String equ_mark;//器材备注
     private String equ_picpath;//器材图片路径
     private int emp_id;//维修员工ID
-
+    public Equipment(){}
+    public Equipment(String equ_name,String equ_type,int equ_num,
+                     String equ_explain,String equ_mark,int emp_id,String equ_picpath){
+        this.emp_id=emp_id;
+        this.equ_explain=equ_explain;
+        this.equ_mark=equ_mark;
+        this.equ_name=equ_name;
+        this.equ_num=equ_num;
+        this.equ_picpath=equ_picpath;
+        this.equ_type =equ_type;
+    }
     public int getEqu_id() {
         return equ_id;
     }

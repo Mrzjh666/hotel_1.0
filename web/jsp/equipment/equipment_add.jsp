@@ -35,7 +35,7 @@
 <div class="logDiv">
     <%--    <img class="logBanner" src="images/logBanner.png" />--%>
     <div class="banner-text">
-        <form class="form-inline" name="equipmentForm" action="../equipment/save" method="post">
+        <form class="form-inline" name="equipmentForm" action="../equipment/save" enctype="multipart/form-data"  method="post">
             <div class="col-md-10" style="float: right;margin-left: -100px;margin-right: 200px;margin-top: 50px;">
                 <!-- 头部提示信息--><tr>
 
@@ -77,7 +77,7 @@
                 <tr>
                     <div class="form-group">
                         <img class="img1" src="images/价格.png" />
-                        <input type="text" id="equ_picpath" name="equ_picpath" placeholder="图片路径" />
+                        <input type="file"  name="file" value="选择上传图片" />
                     </div>
                 </tr>
                 <tr>

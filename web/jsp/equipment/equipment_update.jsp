@@ -37,7 +37,7 @@
 <div class="logDiv">
     <%--    <img class="logBanner" src="images/logBanner.png" />--%>
     <div class="banner-text">
-        <form class="form-inline" name="equipmentForm" action="../equipment/update" method="post">
+        <form class="form-inline" name="equipmentForm" action="../equipment/update" method="post"  enctype="multipart/form-data">
             <div class="best-hot"style="float: right;margin-left: -100px;margin-right: 200px;margin-top: 50px;">
                 <!-- 头部提示信息--><tr>
 
@@ -45,6 +45,7 @@
                     <p class="p2">修改器材信息</p>
                 </div></tr>
                 <!-- 输入框-->
+
                 <tr>
                     器材类型：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="equ_type" id="equ_type" value="${equipment.equ_type}">
                     <option name="equ_type" value="有氧器材">有氧器材</option>
@@ -53,8 +54,9 @@
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <img class="img1" src="../../../images/酒店.png" /><input type="text" id="equ_id" name="equ_id"
-                                                                                placeholder="房间序号" value="${equipment.equ_id}"/>
+                        <img class="img1" src="../../../images/酒店.png" />
+                        <input type="text" name="equ_id" id="equ_id"
+                               placeholder=器材序号" value="${equipment.equ_id}"/>
                     </div>
                 </tr>
                 <tr>
@@ -76,6 +78,16 @@
                 </tr>
                 <tr>
                     <div class="form-group">
+                        <img src="../../../images/酒店.png" /><input type="hidden" id="equ_picpath" name="equ_picpath" value="${equipment.equ_picpath}"  />
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <img src="../../../images/酒店.png" /><input type="file" id="file1" name="file1" value="选择新器材图片"  />
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
                         <img src="../../../images/酒店.png" /><input type="text" id="equ_mark" name="equ_mark" value="${equipment.equ_mark}" placeholder="输入器材备注" />
                     </div>
                 </tr>
@@ -92,7 +104,6 @@
             </div>
         </form></div>
 </div>
-
 <!-- 登录body  end-->
 
 <!-- 登录页面底部 -->

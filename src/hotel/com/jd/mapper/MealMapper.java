@@ -34,7 +34,7 @@ public interface MealMapper {
      */
     @Select("select * from hotel.meal where meal_name like concat('%',#{meal_name},'%') limit #{start_place},#{size}")
     ArrayList<Meal> findMealByName(@Param("meal_name") String meal_name,@Param("start_place") int start_place,@Param("size")int size);
-    @Update("update hotel.meal set meal_type=#{meal_type},meal_name=#{meal_name},meal_price=#{meal_price} where meal_id=#{meal_id}")
+    @Update("update hotel.meal set meal_type=#{meal_type},meal_name=#{meal_name},meal_price=#{meal_price},meal_explain=#{meal_explain},meal_picpath=#{meal_picpath}hotel_id=#{hotel_id} where meal_id=#{meal_id}")
     boolean update(Meal meal);
     @Delete("delete from hotel.meal where meal_id=#{meal_id}")
     boolean delete(@Param("meal_id") int meal_id);

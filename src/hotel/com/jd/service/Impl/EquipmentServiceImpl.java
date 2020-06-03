@@ -52,7 +52,7 @@ public class EquipmentServiceImpl implements EquipmentService {
     @Override
     public void insert(Equipment equipment) {
 
-        System.out.println(equipment.toString());
+        System.out.println(equipment.toString()+"service");
         equipmentMapper.insert(equipment);
     }
     @Transactional(readOnly=false)

@@ -10,7 +10,7 @@ public class Meal{
     private int meal_id;//餐品ID
     private String meal_type;//餐品类型
     private String meal_name;//餐品名称
-    private String meal_price;//餐品价格
+    private double meal_price;//餐品价格
     private String meal_explain;//餐品注释
     private int emp_id;//厨师ID
     private String meal_picpath;//餐品图片路径
@@ -40,11 +40,11 @@ public class Meal{
         this.meal_name = meal_name;
     }
 
-    public String getMeal_price() {
+    public double getMeal_price() {
         return meal_price;
     }
 
-    public void setMeal_price(String meal_price) {
+    public void setMeal_price(double meal_price) {
         this.meal_price = meal_price;
     }
 

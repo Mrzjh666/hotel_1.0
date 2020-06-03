@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -45,7 +46,18 @@ public class MealController {
         return "/jsp/meal/meal_add";
     }
     @RequestMapping("/meal/save")
-    public ModelAndView save(Meal meal, ModelAndView mv){
+    public ModelAndView save(@RequestParam("meal_type") String meal_type,@RequestParam("meal_name") String meal_name,@RequestParam("meal_price") double meal_price,
+                            @RequestParam("emp_id") int emp_id,@RequestParam("file") MultipartFile file,@RequestParam("hotel_id") int hotel_id,@RequestParam("meal_explain") String meal_explain, ModelAndView mv){
+        String filename=file.getOriginalFilename();
+        String picpath = "f://new/hotel/web/images/"+filename;
+        Meal meal = new Meal();
+        meal.setEmp_id(emp_id);
+        meal.setHotel_id(hotel_id);
+        meal.setMeal_explain(meal_explain);
+        meal.setMeal_name(meal_name);
+        meal.setMeal_picpath(picpath);
+        meal.setMeal_type(meal_type);
+        meal.setMeal_price(meal_price);
         try {
             mealService.insert(meal);
             mv.addObject("result","meal添加成功");
