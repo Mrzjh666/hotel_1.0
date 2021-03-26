@@ -64,24 +64,24 @@
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <img class="img1" src="../../../images/酒店.png" /><input type="text" id="meal_name" name="meal_name"
+                        餐品名称<input type="text" id="meal_name" name="meal_name"
                                                                                 placeholder="输入餐品名称" value="${meal.meal_name}">
                     </div></tr>
                 <tr>
                     <div class="form-group">
-                        <img class="img1" src="../../../images/位置（指南针）.png" /><input type="text" id="meal_price" name="meal_price" value="${meal.meal_price}"
+                        餐品价格：<input type="text" id="meal_price" name="meal_price" value="${meal.meal_price}"
                                                                                      placeholder="输入餐品价格"/>
                     </div>
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <img class="img1" src="../../../images/价格.png" /><input type="text" id="meal_explain" name="meal_explain" value="${meal.meal_explain}"
+                        餐品注释<input type="text" id="meal_explain" name="meal_explain" value="${meal.meal_explain}"
                                                                                 placeholder="输入餐品注释" />
                     </div>
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <img src="../../../images/酒店.png" /><input type="text" id="hotel_id" name="hotel_id" value="${meal.hotel_id}" placeholder="当前所属酒店" />
+                        <input type="file" id="meal_picpath" name="meal_picpath" placeholder="图片路径" />
                     </div>
                 </tr>
                 <tr>

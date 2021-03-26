@@ -93,6 +93,12 @@
                 </tr>
                 <tr>
                     <div class="form-group">
+                        <img class="img1" src="images/价格.png" />
+                        <input type="file" id="equ_picpath" name="equ_picpath" placeholder="图片路径" />
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
                         <img src="../../../images/酒店.png" /><input type="text" id="emp_id" name="emp_id" value="${equipment.emp_id}" placeholder="输入维修人员ID" />
                     </div>
                 </tr>

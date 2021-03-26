@@ -24,9 +24,8 @@
             <param-value>/WEB-INF/springmvc-config.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-        <!--文件上传MultipartReso 参数-->
         <multipart-config>
-            <location>f:/new/hotel/web/images</location>
+            <location>D:\hotel_1.0\web\images</location>
             <max-file-size>5242880</max-file-size>
             <max-request-size>10485760</max-request-size>
             <file-size-threshold>0</file-size-threshold>
@@ -49,5 +48,5 @@
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
+    <absolute-ordering />
 </web-app>

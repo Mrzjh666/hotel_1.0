@@ -2,11 +2,12 @@ package hotel.com.jd.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import hotel.com.jd.domain.Manager;
+//import hotel.com.jd.domain.Manager;
 
 /**
  * 判断用户权限的Spring MVC的拦截器
@@ -14,13 +15,14 @@ import hotel.com.jd.domain.Manager;
 public class  AuthorizedInterceptor implements HandlerInterceptor
 {
 
-    /** 定义不需要拦截的请求 */
-    private static final String[] IGNORE_URI=
-            { "main", "login", "exit", "css", "head", "images", "js","manager" };
+//    /** 定义不需要拦截的请求 */
+//    private static final String[] IGNORE_URI=
+//            { "main", "login", "exit", "css", "head", "images", "js","manager" };
+//
+//    /**
+//     * 该方法需要preHandle方法的返回值为true时才会执行。 该方法将在整个请求完成之后执行，主要作用是用于清理资源。
+//     */
 
-    /**
-     * 该方法需要preHandle方法的返回值为true时才会执行。 该方法将在整个请求完成之后执行，主要作用是用于清理资源。
-     */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
                                 Exception exception) throws Exception
@@ -45,8 +47,22 @@ public class  AuthorizedInterceptor implements HandlerInterceptor
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
     {
-//        System.out.println("preHandle");
         return true;
+//        System.out.println("preHandle");
+//        HttpSession session = request.getSession();
+//        if(session.getAttribute("manager")==null)
+//        {
+//            System.out.println("用户未登录，跳转到登陆页。");
+//            // 如果用户没有登录，跳转到登录页面
+//            request.setAttribute("message", "请先登录再访问网站!");
+//            request.getRequestDispatcher("/login.html").forward(request, response);
+//            return false;
+//        }
+//        else
+//        {
+//            return true;
+//        }
+
 //        /** 默认用户没有登录 */
 //        boolean flag=false;
 //        /** 获得请求的ServletPath */

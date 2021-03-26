@@ -92,6 +92,14 @@
                 </tr>
                 <tr>
                     <div class="form-group">
+                        <img class="img1" src="images/价格.png" />
+                        <input type="text" id="meal_picpath" name="meal_picpath" placeholder="图片路径" />
+                        <input type="file" name="file" class="file" id="fileField" onchange="document.getElementById('meal_picpath').value=this.files[0].name"/>
+
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
                         <input type="submit" value="添加" style="width:80px;height:30px;font-family:楷体 ;color:#5856ff;border-radius: 10px">
                     </div>
                 </tr>
